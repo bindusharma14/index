@@ -4,5 +4,20 @@
   - name:Install Docker
     yum: name=docker state=present update _cache=true
   - name: Start Docker
-    service: name=docker state started
-    
+    service: name=docker state=started
+   - name: Copy a new index.htmlfile into place, backing up
+     copy:
+        src: /home/ec2-user/index.html
+        dest: /var/www/html/index.html
+        owner: ec2-user
+        group: ec2-user
+        mode: '0644'
+        backup: yes
+     - name: Copy a new DockerFile
+       copy:
+        src: /home/ec2-user/index.html
+        dest: /var/www/html/index.html
+        owner: ec2-user
+        group: ec2-user
+        mode: '0644'
+        backup: yes
