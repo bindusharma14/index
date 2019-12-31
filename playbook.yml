@@ -1,7 +1,8 @@
-- hosts: amazonlinux    
+- hosts: all    
   become: yes
   tasks:
-  - name:Install Apache
-    yum: name=docker state=present
-    notify: Start Docker
-  - name
+  - name:Install Docker
+    yum: name=docker state=present update _cache=true
+  - name: Start Docker
+    service: name=docker state started
+    
